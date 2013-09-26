@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>desktopnotify Demo</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="../desktopnotify.js"></script>
+<style>
+.ok {background:green;}
+.no {background:yellow;}
+</style>
+</head>
+<body>
+<p id="message"></p>
+<a href='#' id="enable" style="display:none">Click to request permission of notification</a>
+<a href='#' id="show">Show</a>
+<script>
+
+$(function(){
+
+    if(!Notify.isSupported()){
+        $('#message').text('Your browser is not support notifications').addClass('ok');
+    }else{
+        $('#message').text('Your browser is support notifications').addClass('no');
+    }
+    if(Notify.check() == 1){
+        $('#enable').show();
+    }
+    Notify.icon = "/examples/success.ico";
+    $('#enable').click(function(){
+        Notify.request();
+    });
+    $('#show').click(function(){
+        Notify.show({title:'Hello', message:'Test', onclick:function(){
+            alert('click');
+        }});
+    });
+});
+</script>
+</body>
+</html>
