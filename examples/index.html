@@ -4,14 +4,15 @@
 <script src="jquery-1.9.1.min.js"></script>
 <script src="../desktopnotify.js"></script>
 <style>
-.ok {background:green;}
-.no {background:yellow;}
+.ok {background:green;color:white;padding:4px;}
+.no {background:yellow;padding:4px;}
 </style>
 </head>
 <body>
 <p id="message"></p>
 <a href='#' id="enable" style="display:none">Click to request permission of notification</a>
-<a href='#' id="show">Show</a>
+<a href='#' id="show1">Show</a>
+<a href='#' id="show2">Show and close after 5 seconds</a>
 <script>
 
 $(function(){
@@ -28,11 +29,29 @@ $(function(){
     $('#enable').click(function(){
         Notify.request();
     });
-    $('#show').click(function(){
-        Notify.show({title:'Hello', message:'Test', onclick:function(){
-            alert('click');
-        }});
+    $('#show1').click(function(){
+        Notify.show({
+            title:'Hello', 
+            message:'Test1', 
+            onclick:function(){
+                alert('click');
+            },
+            onshow:function(){
+                console.log('show');
+            },
+            onclose:function(){
+                console.log('close');
+            },
+        });
     });
+        $('#show2').click(function(){
+        Notify.show({
+            title:'Hello', 
+            message:'Test2',
+            autoclose:5
+        });
+    });
+
 });
 </script>
 </body>

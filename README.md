@@ -65,6 +65,10 @@ python -m SimpleHTTPServer 8000
 
 It'll start an web server. And you can visit: http://localhost:8000/examples/index.html
 
+## Support
+
+Now this lib supports: chrome, firefox, safari
+
 ## API
 
 ### options
@@ -91,8 +95,12 @@ It'll start an web server. And you can visit: http://localhost:8000/examples/ind
     * `icon` icon of notification, .ico will be the best I think
     * `title`
     * `message`
-    * `ondisplay` callback when show the notification
+    * `onshow` callback when show the notification
     * `onclick` callback when click on the notification
     * `onerror` callback when error
-    * `onclose` callback when close the notification
+    * `onclose` callback when close the notification, in some browser like chrome will not fire this event.
 
+## Other similar projects
+
+* https://github.com/gotardo/HTML5-Desktop-Notif
+* https://github.com/ttsvetko/HTML5-Desktop-Notifications
